@@ -1,14 +1,10 @@
-import GridContainer from './layouts/Grid/GridContainer';
-import GridItem from './layouts/Grid/GridItems';
+
+import Header from './layouts/Header';
 
 function App() {
   return (
     <div className="App">
-      <GridContainer spacing={3}>
-        <GridItem xs>
-          Hello
-        </GridItem>
-      </GridContainer>
+      <Header xs={12} />
     </div>
   );
 }
