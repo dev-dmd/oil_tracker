@@ -1,12 +1,16 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
-import PaperItem from './Paper';
+import PaperContainer from './PaperContainer';
 
 const useStyles = makeStyles((theme) => ({
   gridItem: {
     textAlign: 'center',
   },
+  background: {
+    backgroundColor: theme.palette.background.default,
+    padding: theme.spacing(1),
+  }
 }));
 
 export default function GridItem(props) {
@@ -14,9 +18,9 @@ export default function GridItem(props) {
   const { children, ...rest } = props;
   return (
     <Grid item {...rest} className={classes.gridItem}>
-      <PaperItem elevation={2} className={classes.paper}>
+      <PaperContainer square elevation={0} className={classes.background}>
         {children}
-      </PaperItem>
+      </PaperContainer>
     </Grid>
   );
 }
