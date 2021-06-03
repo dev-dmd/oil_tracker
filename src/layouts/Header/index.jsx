@@ -10,7 +10,10 @@ const useStyles = makeStyles((theme) => ({
   root: {
     flex: 0,
     alignSelf: 'stretch',
-    zIndex: 1
+    zIndex: 1,
+    '& .MuiPaper-elevation24.MuiPaper-rounded ': {
+      padding: theme.spacing(3)
+    }
   },
 }));
 

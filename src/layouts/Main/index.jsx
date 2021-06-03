@@ -11,23 +11,33 @@ import Producers from '../../components/producers';
 const useStyles = makeStyles((theme) => ({
   root: {
     flex: 1,
-    alignSelf: 'stretch'
+    '& > *' : {
+      height: '100%',
+      '& .MuiPaper-root.makeStyles-paper-8.MuiPaper-elevation0, .makeStyles-root-4' : {
+        height: '100%',
+      }
+    },
   },
+  stretchColumns: {
+    display: 'flex',
+    flexDirection: 'column',
+    height: '100%'
+  }
 }));
 
 export default function Main() {
   const classes = useStyles();
   return (
     <div className={classes.root}>
-      <GridContainer style={{zIndex: 0, position: 'relative'}} container spacing={0}>
+      <GridContainer style={{zIndex: 0, position: 'relative', height: '100%'}} container spacing={0}>
         <GridItem item xs={12} sm={3}>
-          <GridContainer spacing={2}>
-            <GridItem xs={12}>
+          <GridContainer className={classes.stretchColumns} spacing={2}>
+            <GridItem style={{flex: 0}} xs={12}>
               <PaperItem elevation={24} style={{padding: '20px 0px 50px 0px', position: 'relative'}}>
                 <Productions />
               </PaperItem>
             </GridItem>
-            <GridItem xs={12}>
+            <GridItem style={{flex: 1}} xs={12}>
               <PaperItem elevation={24} style={{padding: '20px 0px 10px 0px'}}>
                 {/*<Producers />*/}
               </PaperItem>
