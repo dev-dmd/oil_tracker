@@ -21,7 +21,6 @@ const useStyles = makeStyles((theme) => ({
   stretchColumns: {
     display: 'flex',
     flexDirection: 'column',
-    height: '100%'
   }
 }));
 
@@ -33,13 +32,13 @@ export default function Main() {
         <GridItem item xs={12} sm={3}>
           <GridContainer className={classes.stretchColumns} spacing={2}>
             <GridItem style={{flex: 0}} xs={12}>
-              <PaperItem elevation={24} style={{padding: '20px 0px 50px 0px', position: 'relative'}}>
+              <PaperItem elevation={24} style={{padding: '25px 0px 50px 0px', position: 'relative'}}>
                 <Productions />
               </PaperItem>
             </GridItem>
             <GridItem style={{flex: 1}} xs={12}>
-              <PaperItem elevation={24} style={{padding: '20px 0px 10px 0px'}}>
-                {/*<Producers />*/}
+              <PaperItem elevation={24} style={{padding: '20px 0px 10px 0px', height: '100%', zIndex: 2, position: 'relative'}}>
+                <Producers />
               </PaperItem>
             </GridItem>
           </GridContainer>

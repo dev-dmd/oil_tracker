@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
   },
   paper: {
     padding: theme.spacing(1),
-    textAlign: "center",
+    
     color: theme.palette.text.secondary
   },
 }));
@@ -41,7 +41,7 @@ export default function App() {
           <div style={{display: 'flex', flexDirection: 'column', height: 'calc(100vh - 16px)'}}>
             <Header xs={12} className={classes.paper} />
             <Main />
-            <Footer />
+            <Footer className={classes.paper} />
           </div>
           </GridItem>
         </GridContainer>           

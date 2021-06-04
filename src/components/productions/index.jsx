@@ -9,6 +9,7 @@ const useStyles = makeStyles((theme) => ({
   number: {
     color: theme.palette.text.primary,
     paddingTop: theme.spacing(1),
+    fontSize: '56px'
   },
   units: {
     color: theme.palette.text.secondary,
@@ -21,7 +22,7 @@ export default function Productions() {
     <div>
       <Typography component='h5' variant='h5' className={classes.title}>World Oil Production</Typography>
       <Typography variant='h1' className={classes.number}>17.87</Typography>
-      <Typography variant='caption' className={classes.units}>millions barrel per day</Typography>
+      <Typography variant='caption' className={classes.units}>million barrels per day</Typography>
     </div>
   )
 }

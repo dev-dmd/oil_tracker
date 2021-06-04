@@ -9,6 +9,7 @@ import TableRow from '@material-ui/core/TableRow';
 import TableSortLabel from '@material-ui/core/TableSortLabel';
 import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
+import './style.css';
 
 function createData(country, amount) {
   return { country, amount };
@@ -59,8 +60,8 @@ function stableSort(array, comparator) {
 }
 
 const headCells = [
-  { id: 'country', numeric: false, disablePadding: false, label: 'byCountry' },
-  { id: 'amount', numeric: true, disablePadding: false, label: 'byAmount' },
+  { id: 'country', numeric: false, disablePadding: false, label: 'by country' },
+  { id: 'amount', numeric: true, disablePadding: false, label: 'by amount' },
 ];
 
 function SortedTableHead(props) {
@@ -101,13 +102,15 @@ function SortedTableHead(props) {
 const useStyles = makeStyles((theme) => ({
   root: {
     width: '100%',
-    '& .MuiTableCell-head': {
-      borderBottom: '.25px solid #878eca',
-      '& > .MuiTableSortLabel-root' : {
-        fontSize: '10px'
+    '& .MuiTableContainer-root': {
+     height: '400px',
+      '& .MuiTableCell-head': {
+        borderBottom: 'none',
+        '& > .MuiTableSortLabel-root' : {
+          fontSize: '10px'
+        }
       }
-
-    }
+    },
   },
   paper: {
     width: '100%',
@@ -131,7 +134,7 @@ const useStyles = makeStyles((theme) => ({
   },
   cells: {
     padding: theme.spacing(1),
-    borderBottom: '.25px solid #878eca'
+    borderBottom: 'none'
   }
 }));
 
@@ -150,8 +153,9 @@ export default function Producers() {
     <div className={classes.root}>
       <Typography>Top Oil Producers</Typography>
       <Paper elevation={0} className={classes.paper}>
-        <TableContainer>
+        <TableContainer className="custom-scrollbar">
           <Table
+            stickyHeader
             className={classes.table}
             aria-labelledby="tableTitle"
             size='small'
@@ -172,7 +176,7 @@ export default function Producers() {
                       key={row.name}                   
                     >
                       <TableCell className={classes.cells}>{row.country}</TableCell>
-                      <TableCell className={classes.cells} style={{paddingLeft: '50px', paddingRight: '0px'}}>{row.amount}</TableCell>
+                      <TableCell className={classes.cells} style={{paddingLeft: '150px', paddingRight: '0px'}}>{row.amount}</TableCell>
                     </TableRow>
                 ))
               }
