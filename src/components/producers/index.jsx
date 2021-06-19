@@ -117,9 +117,22 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(3),
     marginBottom: theme.spacing(2),
     backgroundColor: 'transparent',
+    display: 'flex',
+    justifyContent: 'center',
+    '& > *': {
+      width: '300px'
+    }
   },
   table: {
-    minWidth: 150,
+    display: 'flex',
+    flexDirection: 'column',
+    '& tr': {
+      display: 'flex',
+      justifyContent: 'space-between',
+      '& th': {
+        width: '50%'
+      }
+    }
   },
   visuallyHidden: {
     border: 0,
@@ -169,14 +182,14 @@ export default function Producers() {
             />
             <TableBody>
               {
-                stableSort(rows, getComparator(order, orderBy))
+                stableSort(rows , getComparator(order, orderBy))
                 .map(row => (
                     <TableRow
                       hover
                       key={row.name}                   
                     >
                       <TableCell className={classes.cells}>{row.country}</TableCell>
-                      <TableCell className={classes.cells} style={{paddingLeft: '150px', paddingRight: '0px'}}>{row.amount}</TableCell>
+                      <TableCell className={classes.cells}>{row.amount}</TableCell>
                     </TableRow>
                 ))
               }
