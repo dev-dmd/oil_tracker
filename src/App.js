@@ -8,6 +8,7 @@ import Footer from './layouts/Footer';
 import GridContainer from './layouts/Grid/GridContainer';
 import GridItem from './layouts/Grid/GridItems';
 import Main from './layouts/Main';
+import { DataProvider } from './fetcher';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -33,14 +34,16 @@ const useStyles = makeStyles((theme) => ({
 export default function App() {
   const classes = useStyles();
   return (
-    <ThemeProvider style={{height: '100vh'}} theme={theme}>
+    <ThemeProvider theme={theme}>
       <CssBaseline />             
       <div  className={classes.root}>
         <GridContainer container spacing={0}>
           <GridItem className={classes.background} item xs={12}>
           <div style={{display: 'flex', flexDirection: 'column', height: 'calc(100vh - 16px)'}}>
             <Header xs={12} className={classes.paper} />
+            <DataProvider>
             <Main />
+            </DataProvider>
             <Footer className={classes.paper} />
           </div>
           </GridItem>

@@ -10,27 +10,28 @@ import TableSortLabel from '@material-ui/core/TableSortLabel';
 import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
 import './style.css';
+import { useFetch } from '../../fetcher';
 
-function createData(country, amount) {
-  return { country, amount };
+function createData(id, country, amount) {
+  return { id, country, amount };
 }
 
 const rows = [
-  createData('India', 3287263),
-  createData('China', 9596961),
-  createData('Italy', 301340),
-  createData('United States', 9833520),
-  createData('Canada',  9984670),
-  createData('Australia', 7692024),
-  createData('Germany', 357578),
-  createData('Ireland', 70273),
-  createData('Mexico', 1972550),
-  createData('Japan', 377973),
-  createData('France', 640679),
-  createData('United Kingdom', 242495),
-  createData('Russia', 17098246),
-  createData('Nigeria', 923768),
-  createData('Brazil', 8515767),
+  createData(1, 'India', 3287263),
+  createData(2, 'China', 9596961),
+  createData(3, 'Italy', 301340),
+  createData(4, 'United States', 9833520),
+  createData(5, 'Canada',  9984670),
+  createData(6, 'Australia', 7692024),
+  createData(7, 'Germany', 357578),
+  createData(8, 'Ireland', 70273),
+  createData(9, 'Mexico', 1972550),
+  createData(10, 'Japan', 377973),
+  createData(11, 'France', 640679),
+  createData(12, 'United Kingdom', 242495),
+  createData(13, 'Russia', 17098246),
+  createData(14, 'Nigeria', 923768),
+  createData(15, 'Brazil', 8515767),
 ];
 
 function descendingComparator(a, b, orderBy) {
@@ -186,7 +187,7 @@ export default function Producers() {
                 .map(row => (
                     <TableRow
                       hover
-                      key={row.name}                   
+                      key={row.id}                   
                     >
                       <TableCell className={classes.cells}>{row.country}</TableCell>
                       <TableCell className={classes.cells}>{row.amount}</TableCell>

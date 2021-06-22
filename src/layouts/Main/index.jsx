@@ -24,8 +24,6 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const src = "//www.eia.gov/opendata/embed/iframe.php?geoset_id=INTL.53-1-TBPD.M&map=world&regions=BWA";
-
 export default function Main() {
   const classes = useStyles();
   return (
@@ -47,7 +45,7 @@ export default function Main() {
         </GridItem>
         <GridItem style={{zIndex: -1, position: 'relative'}} item xs={12} sm={5}>           
           <PaperContainer elevation={0}>
-          <iframe title="map" id="eia_widget" style={{width:'100%', height:'500px'}} src={src}></iframe>
+            <WorldMap />
           </PaperContainer>
         </GridItem>
         <GridItem item xs={12} sm={4}>           
