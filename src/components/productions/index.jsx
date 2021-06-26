@@ -2,7 +2,6 @@ import React from 'react';
 import { Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { useFetch } from '../../fetcher/';
-import { co } from 'co';
 
 const useStyles = makeStyles((theme) => ({
   title: {
@@ -27,7 +26,7 @@ export default function Productions() {
       <Typography component='h5' variant='h5' className={classes.title}>World Oil Production</Typography>
       <Typography variant='h1' className={classes.number}>
       {
-        worldOilProd.data === undefined ? NaN :
+        worldOilProd.data === undefined ? '...' :
         (worldOilProd.data.series[0].data[0][1]/1000).toFixed(2)
       }
       </Typography>
