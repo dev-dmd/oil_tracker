@@ -3,7 +3,7 @@ import React, { useState, useEffect, useContext, createContext } from 'react';
 import axios from 'axios';
 import countriesList from './countries.json';
 
-const FetchContest = createContext();
+const FetchContest = createContext({});
 
 export const useFetch = () => {
   return useContext(FetchContest);
@@ -26,52 +26,38 @@ export function DataProvider({ children }) {
   // console.log(OIL_PRODUCTION_COUNTRIES)
 
   const [worldOilProd, setWorldOilProd] = useState([]);
-  const [oilProdCountries, setOilProdCountries] = useState({
-    countriesName: '',
-    values: ''
-  });
+  const [oilProdCountries, setOilProdCountries] = useState([]);
 
-  const getData = async () => {
+  const getWorldOilProd = async () => {
     const response = await axios.get(OIL_PRODUCTION_WLD);
     setWorldOilProd(response);
   }
 
-  const getProductionCountries = async () => {
-    let countries = [];
-    let i;
-    for(i = 0; i < OIL_PRODUCTION_COUNTRIES.length; i++ ){
+  const getProductionCountriesValue = async () => {
+    const countries = [];    
+    for(let i = 0; i < OIL_PRODUCTION_COUNTRIES.length; i++ ){
       let countrie = OIL_PRODUCTION_COUNTRIES[i];
       countries.push(countrie);
     }
-
-    for(let i = 0; i < 10; i++){
+    const arr = [];
+    for(let i = 0; i < 20; i++){
       const allCountries = await axios.get(countries[i]);
       if(allCountries.data.hasOwnProperty('data')){ continue; }
-      setOilProdCountries({
-        ...oilProdCountries,
-        countriesName: allCountries.data,
-        values: allCountries.data
-      });
+      arr.push(allCountries);
     }
-    
-    // console.log(countries.data.series[0].geography === countriesList.lists[0].COUNTRY_CODE ? countriesList.lists[0].COUNTRY_NAME : 'NaN');
-    // console.log(values.data.series[0].data[0][1]);
-    // setOilProdCountries({
-    //   countriesName: 'Serbia',
-    //   values: '14.123'
-    // })
-  }
+    setOilProdCountries(arr);
+  };
 
   console.log(oilProdCountries);
 
   useEffect(()=> {
-    getData();
-    getProductionCountries();
+    getWorldOilProd();
+    getProductionCountriesValue();
   }, []);
 
   const values = {
     worldOilProd,
-    
+    oilProdCountries
   }
 
   return (

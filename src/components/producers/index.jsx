@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -11,28 +11,11 @@ import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
 import './style.css';
 import { useFetch } from '../../fetcher';
+import countriesList from '../../fetcher/countries.json';
 
-function createData(id, country, amount) {
-  return { id, country, amount };
+function createData(country, amount) {
+  return { country, amount };
 }
-
-const rows = [
-  createData(1, 'India', 3287263),
-  createData(2, 'China', 9596961),
-  createData(3, 'Italy', 301340),
-  createData(4, 'United States', 9833520),
-  createData(5, 'Canada',  9984670),
-  createData(6, 'Australia', 7692024),
-  createData(7, 'Germany', 357578),
-  createData(8, 'Ireland', 70273),
-  createData(9, 'Mexico', 1972550),
-  createData(10, 'Japan', 377973),
-  createData(11, 'France', 640679),
-  createData(12, 'United Kingdom', 242495),
-  createData(13, 'Russia', 17098246),
-  createData(14, 'Nigeria', 923768),
-  createData(15, 'Brazil', 8515767),
-];
 
 function descendingComparator(a, b, orderBy) {
   if (b[orderBy] < a[orderBy]) {
@@ -103,7 +86,7 @@ function SortedTableHead(props) {
 const useStyles = makeStyles((theme) => ({
   root: {
     width: '100%',
-    '& .MuiTableContainer-root': {
+    '& table': {
      height: '400px',
       '& .MuiTableCell-head': {
         borderBottom: 'none',
@@ -154,6 +137,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Producers() {
   const classes = useStyles();
+  const { oilProdCountries } = useFetch();
   const [order, setOrder] = React.useState('asc');
   const [orderBy, setOrderBy] = React.useState('amount');
   
@@ -163,6 +147,8 @@ export default function Producers() {
     setOrderBy(property);
   };
 
+  const rows = oilProdCountries;
+  
   return (
     <div className={classes.root}>
       <Typography>Top Oil Producers</Typography>
@@ -184,13 +170,17 @@ export default function Producers() {
             <TableBody>
               {
                 stableSort(rows , getComparator(order, orderBy))
-                .map(row => (
+                .map((row, i) => (
                     <TableRow
                       hover
                       key={row.id}                   
                     >
-                      <TableCell className={classes.cells}>{row.country}</TableCell>
-                      <TableCell className={classes.cells}>{row.amount}</TableCell>
+                      <TableCell className={classes.cells}>
+                      {
+                        countriesList.lists[i].COUNTRY_CODE === row.data.series[0].geography ? countriesList.lists[i].COUNTRY_NAME : row.data.series[0].geography
+                      }
+                      </TableCell>
+                      <TableCell className={classes.cells}>{(row.data.series[0].data[0][1]).toFixed(2)}</TableCell>
                     </TableRow>
                 ))
               }
@@ -201,3 +191,20 @@ export default function Producers() {
     </div>
   );
 }
+
+
+// createData(1, 'India', 3287263),
+  // createData(2, 'China', 9596961),
+  // createData(3, 'Italy', 301340),
+  // createData(4, 'United States', 9833520),
+  // createData(5, 'Canada',  9984670),
+  // createData(6, 'Australia', 7692024),
+  // createData(7, 'Germany', 357578),
+  // createData(8, 'Ireland', 70273),
+  // createData(9, 'Mexico', 1972550),
+  // createData(10, 'Japan', 377973),
+  // createData(11, 'France', 640679),
+  // createData(12, 'United Kingdom', 242495),
+  // createData(13, 'Russia', 17098246),
+  // createData(14, 'Nigeria', 923768),
+  // createData(15, 'Brazil', 8515767),

@@ -13,20 +13,8 @@
           "COUNTRY_NAME": "Angola"
       },
       {
-          "COUNTRY_CODE": "AIA",
-          "COUNTRY_NAME": "Anguilla"
-      },
-      {
-          "COUNTRY_CODE": "ALA",
-          "COUNTRY_NAME": "Åland Islands"
-      },
-      {
           "COUNTRY_CODE": "ALB",
           "COUNTRY_NAME": "Albania"
-      },
-      {
-          "COUNTRY_CODE": "AND",
-          "COUNTRY_NAME": "Andorra"
       },
       {
           "COUNTRY_CODE": "ARE",
@@ -47,10 +35,6 @@
       {
           "COUNTRY_CODE": "ATA",
           "COUNTRY_NAME": "Antarctica"
-      },
-      {
-          "COUNTRY_CODE": "ATF",
-          "COUNTRY_NAME": "French Southern Territories"
       },
       {
           "COUNTRY_CODE": "ATG",
@@ -79,10 +63,6 @@
       {
           "COUNTRY_CODE": "BEN",
           "COUNTRY_NAME": "Benin"
-      },
-      {
-          "COUNTRY_CODE": "BES",
-          "COUNTRY_NAME": "Bonaire, Sint Eustatius and Saba"
       },
       {
           "COUNTRY_CODE": "BFA",
